@@ -32,6 +32,23 @@ RTMultiLine >> orthoHorizontalBalancedToBottomWithOffset: offset [
 ]
 
 { #category : #'*LNU-Roassal-Extensions' }
+RTMultiLine class >> orthoVerticalBalanceTo: balance [
+    "0 = level of fromPoint
+     0.5 = middle
+     1 = level of toPoint"
+
+    self
+        block: [ :fromPoint :toPoint | 
+            | midy |
+            midy := toPoint y * balance + (fromPoint y * (1 - balance)).
+            Array
+                with: fromPoint
+                with: fromPoint x @ midy
+                with: toPoint x @ midy
+                with: toPoint ]
+]
+
+{ #category : #'*LNU-Roassal-Extensions' }
 RTMultiLine >> orthoVerticalBalanceTo: balance withOffset: offset [
 	"0 = level of fromPoint
 	 0.5 = middle

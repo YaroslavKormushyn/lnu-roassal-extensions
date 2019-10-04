@@ -1,7 +1,7 @@
 Class {
 	#name : #RTVerticalBottomAttachPoint,
 	#superclass : #RTAttachPoint,
-	#category : #'LNU-Roassal-Extensions'
+	#category : #'LNU-Roassal-Extensions-AttachPoint'
 }
 
 { #category : #'as yet unclassified' }
