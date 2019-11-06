@@ -170,7 +170,7 @@ RTComposer >> redrawNamesFor: groupNames [
 { #category : #'*LNU-Roassal-Extensions' }
 RTComposer >> replaceElementsInGroup: groupName with: matrix [
 	self removeGroup: groupName.
-	MatrixVisualizer on: matrix withView: view.
+	LinkedDataVisualizer on: matrix withView: view.
 	self group: groupName.
 	self view signalUpdate
 ]
