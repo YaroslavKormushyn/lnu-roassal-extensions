@@ -34,8 +34,22 @@ RTShapeBuilder >> verticalBottomAttachPoint [
 ]
 
 { #category : #'*LNU-Roassal-Extensions' }
+RTShapeBuilder >> verticalBottomToTopAttachPoint [
+	"Set the vertical attach point for the edges to be built"
+
+	self attachPoint: #withVerticalBottomToTopAttachPoint
+]
+
+{ #category : #'*LNU-Roassal-Extensions' }
 RTShapeBuilder >> verticalTopAttachPoint [
 	"Set the vertical attach point for the edges to be built"
 
 	self attachPoint: #withVerticalTopAttachPoint
+]
+
+{ #category : #'*LNU-Roassal-Extensions' }
+RTShapeBuilder >> verticalTopToBottomAttachPoint [
+	"Set the vertical attach point for the edges to be built"
+
+	self attachPoint: #withVerticalTopToBottomAttachPoint
 ]

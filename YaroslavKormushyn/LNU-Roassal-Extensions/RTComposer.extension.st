@@ -136,6 +136,18 @@ RTComposer >> move: name1 between: name2 and: name3 [
 ]
 
 { #category : #'*LNU-Roassal-Extensions' }
+RTComposer >> nameGroup: aName as: title sized: height [
+	| label |
+	label := (RTLabel new text: title; height: height) element.
+	TRConstraint move: label above: (mapping at: aName).
+	view add: label.
+
+	"store a reference to the created element"
+	names add: label.
+	^ label
+]
+
+{ #category : #'*LNU-Roassal-Extensions' }
 RTComposer >> redrawBackgroundsFor: groupNames [
 	self removeAllBackgrounds.
 	groupNames
@@ -159,9 +171,29 @@ RTComposer >> redrawNamesAndBackgroundsFor: groupNames [
 ]
 
 { #category : #'*LNU-Roassal-Extensions' }
+RTComposer >> redrawNamesAndBackgroundsFor: groupNames textSize: height [
+	self
+		removeAllBackgrounds;
+		removeAllNames.
+	groupNames
+		do: [ :name | 
+			self setBackgroundColor: (Color gray alpha: 0.2) forGroup: name.
+			self nameGroup: name as: name asString sized: height ]
+]
+
+{ #category : #'*LNU-Roassal-Extensions' }
 RTComposer >> redrawNamesFor: groupNames [
 	self removeAllNames.
 	groupNames do: [ :name | self nameGroup: name as: name asString ].
+	(mapping includesKey: #labels)
+		ifTrue: [ self groupToExisting: #labels ]
+		ifFalse: [ self group: #labels ]
+]
+
+{ #category : #'*LNU-Roassal-Extensions' }
+RTComposer >> redrawNamesFor: groupNames textSize: height [
+	self removeAllNames.
+	groupNames do: [ :name | self nameGroup: name as: name asString sized: height].
 	(mapping includesKey: #labels)
 		ifTrue: [ self groupToExisting: #labels ]
 		ifFalse: [ self group: #labels ]
