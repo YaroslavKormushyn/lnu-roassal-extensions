@@ -15,3 +15,11 @@ RTAbstractLine >> withVerticalBottomAttachPoint [
 	self attachPoint: ap.
 	^ ap
 ]
+
+{ #category : #'*LNU-Roassal-Extensions' }
+RTAbstractLine >> withVerticalTopAttachPoint [
+	| ap |
+	ap := RTVerticalTopAttachPoint new.
+	self attachPoint: ap.
+	^ ap
+]
